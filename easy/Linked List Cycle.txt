@@ -1,0 +1,21 @@
+QUE: https://leetcode.com/problems/linked-list-cycle/
+
+Code: class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+       // ListNode *p=head;
+        if(head==NULL){
+            return false;
+        }
+        while(head!=NULL){
+            head->val=100001;
+            head=head->next;
+            if(head==NULL) return false;
+            else if(head->val==100001){
+                return true;
+            }
+            
+        }
+        return false;
+    }
+};

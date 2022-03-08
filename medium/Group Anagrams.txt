@@ -1,0 +1,40 @@
+Link: https://leetcode.com/problems/group-anagrams/
+
+code:
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> ans;
+        vector<string> sorted;
+        string s;
+        for(int i=0;i<strs.size();i++){
+            s=strs[i];
+            sort(s.begin(),s.end());
+            sorted.push_back(s);
+        }
+        
+        if(strs.size()==1){
+            ans.push_back(strs);
+            return ans;
+        }
+        for(int i=0;i<strs.size();i++){
+            vector<string>a;
+            if(sorted[i]!="_"){
+                a.push_back(strs[i]);
+                if(i!=strs.size()-1){
+                for(int j=i+1;j<strs.size();j++){
+                if(sorted[i]==sorted[j]){
+                    a.push_back(strs[j]);
+                    sorted[j]="_";
+                }
+                }
+                }
+                
+            }
+            if(!a.empty()){ans.push_back(a);}
+            
+        }
+        return ans;
+    }
+};
