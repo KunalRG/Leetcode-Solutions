@@ -1,0 +1,23 @@
+QUE: https://leetcode.com/problems/power-of-four/
+
+Code:
+
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        //bool ans=false;
+        int m;
+        if(n==0) return false;
+        if(n==1) return true;
+        while(n!=1){
+            m= n % 4;
+            n= n / 4;
+            if(m!=0) return false;
+        }
+        if(n==1 && m==0){
+            return true;
+        }
+        else {return false;}
+        
+    }
+};
