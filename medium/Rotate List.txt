@@ -1,0 +1,31 @@
+Que: https://leetcode.com/problems/rotate-list/submissions/
+
+Code:
+
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head==NULL) return 0;
+        if(head->next==NULL) return head;
+        ListNode *p=head;
+        int i=0,count=0;
+        while(p!=NULL){ //counting no. of nodes
+            count++;
+            p=p->next;
+        }
+        
+        k=k%count; //to find remaining rotations
+        while(i<k){
+            ListNode *p=head;
+            while(p->next->next!=NULL){
+                p=p->next;
+            }
+            p->next->next=head;
+            head=p->next;
+            p->next=NULL;
+            i++;
+        }
+        //cout<<k<<" "<<count;
+        return head;
+    }
+};
