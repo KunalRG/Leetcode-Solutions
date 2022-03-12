@@ -1,0 +1,20 @@
+Que: https://leetcode.com/problems/rotate-array/
+
+Code:
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        //if(nums.size()==1) return nums;
+        //while(k>100){k= k%nums.size();}
+        k= k%nums.size();
+        int i=0,key;
+        while(i<k){
+            key=nums[nums.size()-1];
+            for(int j=nums.size()-1;j>0;j--){
+                nums[j]=nums[j-1];
+            }
+            nums[0]=key;
+            i++;
+        }
+    }
+};
