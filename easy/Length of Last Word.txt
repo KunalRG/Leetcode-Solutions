@@ -1,0 +1,17 @@
+Que: https://leetcode.com/problems/length-of-last-word/
+
+Code:
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int count=0,temp=0;
+        //if(s.size()==1) return 1;
+        for(int i=s.size()-1;i>=0;i--){
+            if(s[i]!=' ') {temp++;count=temp;}
+            else temp=0;
+            
+            if(temp<count) break;
+        }
+        return count;
+    }
+};
