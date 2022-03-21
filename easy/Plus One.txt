@@ -1,0 +1,39 @@
+Que: https://leetcode.com/problems/plus-one/
+
+Code:
+
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int l= digits.size();
+        int carry=1; //addition at least place
+        vector<int> ans;
+        
+        for(int i= l-1;i>=0;i--){
+            if(i==l-1 & digits[i] < 9) 
+            {
+                cout<<carry<<" ";
+                digits[i]=digits[i]+carry;
+                ans.push_back(digits[i]);               
+                carry=0;
+
+            }
+            
+            else if(i==l-1 & digits[i] == 9)
+            {
+                digits[i]=digits[i]+carry;
+                ans.push_back(0);               
+                carry=1;
+            }
+            else{
+                digits[i]+=carry;
+                if(digits[i]==10) {ans.push_back(0);carry=1;}
+                else {ans.push_back(digits[i]);carry=0;}
+                 
+            }
+        }
+        if(carry==1) ans.push_back(carry);
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
