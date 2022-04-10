@@ -1,0 +1,35 @@
+Que: https://leetcode.com/problems/baseball-game/
+
+Code:
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        vector<int> record;
+        int sum=0,k=-1;
+        
+        for(int i=0;i<ops.size();i++){
+            if(ops[i]!="C" && ops[i]!="D" && ops[i]!="+"){
+                record.push_back(stoi(ops[i]));
+                k++;
+            }
+            else if(ops[i]=="C"){
+                record.pop_back();
+                k--;
+            }
+            else if(ops[i]=="D"){
+                record.push_back(record[k]*2);
+                k++;
+            }
+            else  if(ops[i]=="+"){
+                sum=record[k]+record[k-1];
+                record.push_back(sum);
+                k++;
+            }
+        }
+        int ans=0;
+        for(int i=0;i<record.size();i++){
+            ans=ans+record[i];
+        }
+        return ans;
+    }
+};
